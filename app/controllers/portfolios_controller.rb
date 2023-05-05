@@ -12,7 +12,7 @@ class PortfoliosController < ApplicationController
   end
 
   def create
-    @portfolio_item = Portfolio.new(portfolio_‰item_params)
+    @portfolio_item = Portfolio.new(portfolio_item_params)
 
     respond_to do |format|
       if @portfolio_item.save
@@ -34,6 +34,19 @@ class PortfoliosController < ApplicationController
       redirect_to portfolios_path
     else
       render 'edit'
+    end
+  end
+
+  def destroy
+    # Perform the lookup
+    @portfolio_item = Portfolio.find(params[:id])
+
+    # Destroy/delete the record
+    @portfolio_item.destroy
+
+    # Redirect
+    respond_to do |format|
+      format.html { redirect_to portfolios_url, notice: 'Record was successfully destroyed.' }
     end
   end
 
