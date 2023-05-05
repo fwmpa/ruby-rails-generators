@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
   resources :portfolios
   resources :blogs
-  get 'pages/home'
-  get 'pages/about'
-  get 'pages/contact'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'about-me', to: 'pages#about'
+  get 'contact', to: 'pages#contact'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root to: 'pages#home'
 end
