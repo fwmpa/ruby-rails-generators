@@ -3,12 +3,16 @@ class PortfoliosController < ApplicationController
     @portfolio_items = Portfolio.all
   end
 
+  def show
+    @portfolio_item = Portfolio.find(params[:id])
+  end
+
   def new
     @portfolio_item = Portfolio.new
   end
 
   def create
-    @portfolio_item = Portfolio.new(portfolio_item_params)
+    @portfolio_item = Portfolio.new(portfolio_‰item_params)
 
     respond_to do |format|
       if @portfolio_item.save
